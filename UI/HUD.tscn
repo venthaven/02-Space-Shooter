@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/HyperspaceBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/pirate_pilot.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_bottom = 60.0
+color = Color( 0, 0, 0, 0.25098 )
+
+[node name="background2" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+color = Color( 0, 0, 0, 0.25098 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 10.0
+margin_right = 210.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+text = "score: "
+
+[node name="Pilotspeech" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = -46.0
+margin_right = 691.0
+custom_fonts/font = SubResource( 1 )
+text = "systems green captain, cleared to engage"
+
+[node name="Time" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -310.0
+margin_right = -110.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+text = "time: "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+margin_right = 800.0
+margin_bottom = 740.0
+rect_scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Indicator_Container" type="Node" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
